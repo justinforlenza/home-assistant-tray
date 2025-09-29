@@ -24,6 +24,13 @@ fn save_url(url: &str, config: State<Mutex<Config>>, window: WebviewWindow, app:
     Ok(())
 }
 
+
+#[command]
+fn get_url(config: State<Mutex<Config>>) -> Result<Option<String>, String> {
+  let config = config.lock().unwrap();
+  Ok(config.url.clone())
+}
+
 fn on_window_event(window: &Window, event: &WindowEvent) {
     let app_handle = window.app_handle();
     let config = app_handle.state::<Mutex<Config>>();
@@ -52,7 +59,7 @@ fn on_window_event(window: &Window, event: &WindowEvent) {
 pub fn run() {
     Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![save_url])
+        .invoke_handler(tauri::generate_handler![save_url, get_url])
         .setup(|app| {
             let _tray = Tray::new(app);
 
