@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Assistant Tray</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <h1>Home Assistant Tray App</h1>
+    <form id="save-form" autocomplete="off">
+      <label for="url-input">Enter your Home Assistant URL:</label>
+      <input id="url-input" type="url" placeholder="https://ha.example.com" autocomplete="off" required />
+      <button type="submit">Save URL</button>
+    </form>
+  </body>
+</html>
